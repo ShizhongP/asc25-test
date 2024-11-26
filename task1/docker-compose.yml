@@ -1,0 +1,25 @@
+services:
+  worker1:
+    build: .
+    environment:
+      WORKER_ID: "1"
+  worker2:
+    build: .
+    environment:
+      WORKER_ID: "2"
+  worker3:
+    build: .
+    environment:
+      WORKER_ID: "3"
+  worker4:
+    build: .
+    environment:
+      WORKER_ID: "4"
+  master:
+    build: .
+    command: ["python", "master.py"]
+    depends_on:
+      - worker1
+      - worker2
+      - worker3
+      - worker4
